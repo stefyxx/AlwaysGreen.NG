@@ -1,12 +1,13 @@
 import { Address } from "./address";
+import { Transport } from "./transport";
 
-export interface CourierListItem {
+export interface Courier {
     id : number;
     name: string;
     phoneNumber: string;
     email: string;
     vaTnumber: string;
     isActive : boolean;
-    address : Address;
-    
+    address : Address; 
+    transports: Transport[] | [];  
 }
