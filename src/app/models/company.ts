@@ -1,9 +1,9 @@
-import { Location } from "./location";
+import { ILocation } from "./location";
 import { Roleenum } from "./roleenum";
-import { Siret } from "./siret";
+import { ISiret } from "./siret";
 
-export interface Company extends Location{
+export interface ICompany extends ILocation{
     VATnumber: string;
     roles : [Roleenum.Company];
-    siret : Siret;
+    siret : ISiret;
 }

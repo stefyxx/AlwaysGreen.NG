@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ICourier } from '../../../models/courier';
 
 @Component({
   selector: 'app-all-couriers',
@@ -9,5 +10,5 @@ import { Component } from '@angular/core';
 })
 export class AllCouriersComponent {
 
-  allCouriers : Array<object> = []
+  allCouriers : ICourier[] = [];
 }

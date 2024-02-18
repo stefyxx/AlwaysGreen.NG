@@ -1,12 +1,11 @@
-import { ArrayType } from "@angular/compiler";
 import { Roleenum } from "./roleenum";
-import { Address } from "./address";
-import { Login } from "./login";
-import { Transport } from "./transport";
+import { IAddress } from "./address";
+import { ILogin } from "./login";
+import { ITransport } from "./transport";
 
-type NewType = Roleenum;
+//type NewType = Roleenum;
 
-export interface Location {
+export interface ILocation {
     id: Number;
     agencyname: string | null;
     companyname : string | null;
@@ -15,9 +14,9 @@ export interface Location {
     roles : Roleenum[] | []; //ArrayType[NewType] --> x default non avrà il mio Enum
     isActive : boolean;
     //FK
-    address: Address;
-    login: Login;
+    address: IAddress;
+    login: ILogin;
 
-    transportFrom: Transport[] | [];
-    transportTo: Transport[] | [];
+    transportFrom: ITransport[] | [];
+    transportTo: ITransport[] | [];
 }

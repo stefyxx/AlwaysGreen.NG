@@ -1,8 +1,9 @@
-import { Login } from "./login";
-import { Location } from "./location";
-import { Particular } from "./particular";
+import { ILogin } from "./login";
+import { ILocation } from "./location";
+import { IParticular } from "./particular";
 
-export interface Loginwithfk extends Login {
-    depot: Location | null;
-    particular : Particular | null;
+
+export interface ILoginwithfk extends ILogin {
+    depot: ILocation | null;
+    particular : IParticular | null;
 }

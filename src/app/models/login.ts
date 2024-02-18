@@ -1,6 +1,6 @@
 import { Roleenum } from "./roleenum";
 
-export interface Login {
+export interface ILogin {
     id: number;
     username: string;
     password : Uint8Array;

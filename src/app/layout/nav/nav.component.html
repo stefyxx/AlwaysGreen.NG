@@ -1,8 +1,7 @@
 <ul class="pill-group">
     @for (item of links; track item.title) {
         <li routerLinkActive="active">
-            <a class="pill" [routerLink]="item.link" target="_blank"
-            rel="noopener">
+            <a class="pill" [routerLink]="item.link" target="_blank" rel="noopener">
             <span>{{ item.title }}</span>
             <i [ngClass]="item.icon"></i>
             </a>

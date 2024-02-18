@@ -1,8 +1,8 @@
-import { Address } from "./address";
-import { Login } from "./login";
+import { IAddress } from "./address";
+import { ILogin } from "./login";
 import { Roleenum } from "./roleenum";
 
-export interface Particular {
+export interface IParticular {
     id: number;
     firstname:string;
     lastname: string;
@@ -11,6 +11,6 @@ export interface Particular {
     roles: [Roleenum.Particular];
     isActive: boolean;
     //FK
-    address: Address;
-    login: Login;
+    address: IAddress;
+    login: ILogin;
 }

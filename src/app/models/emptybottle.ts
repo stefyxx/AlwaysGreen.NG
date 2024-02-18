@@ -1,11 +1,11 @@
-import { Transport } from "./transport";
+import { ITransport } from "./transport";
 
-export interface Emptybottle {
+export interface IEmptybottle {
     id: number;
     typename : string;
     quantity : number;
     prix : number | null;
     
     //FK
-    transports: Transport[] | [];
+    transports: ITransport[] | [];
 }

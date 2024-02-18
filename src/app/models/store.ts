@@ -1,11 +1,11 @@
-import { Location } from "./location";
+import { ILocation } from "./location";
 import { Roleenum } from "./roleenum";
-import { Siret } from "./siret";
+import { ISiret } from "./siret";
 
-export interface Store extends Location {
+export interface IStore extends ILocation {
     VATnumber: string;
     roles: [Roleenum.Store];
     isPickUpPoint: boolean;
     isStorePoint : boolean;
-    siret : Siret
+    siret : ISiret
 }

@@ -1,13 +1,13 @@
-import { Address } from "./address";
-import { Transport } from "./transport";
+import { IAddress } from "./address";
+import { ITransport } from "./transport";
 
-export interface Courier {
+export interface ICourier {
     id : number;
     name: string;
     phoneNumber: string;
     email: string;
     vaTnumber: string;
     isActive : boolean;
-    address : Address; 
-    transports: Transport[] | [];  
+    address : IAddress; 
+    transports: ITransport[] | [];  
 }

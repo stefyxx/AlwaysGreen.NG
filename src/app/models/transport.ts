@@ -1,15 +1,15 @@
-import { Courier } from "./courier";
-import { Emptybottle } from "./emptybottle";
-import { Location } from "./location";
+import { ICourier } from "./courier";
+import { IEmptybottle } from "./emptybottle";
+import { ILocation } from "./location";
 
-export interface Transport {
+export interface ITransport {
     id: number;
     date: Date;
     //many to many
-    emptybottles: Emptybottle[] | [];
+    emptybottles: IEmptybottle[] | [];
     
     //one to many
-    loctationFrom: Location | null;
-    locationTo: Location | null;
-    courier: Courier;
+    loctationFrom: ILocation | null;
+    locationTo: ILocation | null;
+    courier: ICourier;
 }
