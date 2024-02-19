@@ -1,0 +1,19 @@
+@if(control && (control.dirty || control.touched) && control.errors) {
+    <span *ngIf="control.errors['required']">Ce champs est requis</span>
+    <span *ngIf="control.errors['maxlength']">
+        Ce champs est trop long ({{ control.errors['maxlength'].actualLength }}/{{ control.errors['maxlength'].requiredLength }})
+    </span>
+
+    <span *ngIf="control.errors['minlength']">
+        Ce champs est trop court ({{ control.errors['minlength'].actualLength }}/{{ control.errors['minlength'].requiredLength }})
+    </span>
+    <span *ngIf="control.errors['email']">Email invalide</span>
+    <span *ngIf="control.errors['max']">La valeur est grande</span>
+    <span *ngIf="control.errors['min']">La valeur est trop petite</span>
+    <span *ngIf="control.errors['pattern']">Pattern invalide</span>
+    <span *ngIf="control.errors['beforeToday']">Date invalide (max: {{ control.errors['beforeToday'].maxDate | date : 'dd/MM/yyyy' }})</span>
+    <span *ngIf="control.errors['notBefore']">Date invalide (min: {{ control.errors['notBefore'].minDate | date : 'dd/MM/yyyy' }})</span>
+    <span *ngIf="control.errors['streetRequired']">La rue est un champ requis</span>
+    <span *ngIf="control.errors['invalidAddress']">L'adresse est invalide'</span>
+}
+

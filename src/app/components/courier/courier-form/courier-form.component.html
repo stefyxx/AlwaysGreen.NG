@@ -1,0 +1,40 @@
+<p>courier-form works!</p>
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="input-group">
+        <span class="p-float-label">
+            <input formControlName="name" id="name" type="text" pInputText> 
+            <label for="name">Name</label>
+        </span>
+        <app-form-error [control]="form.controls['name']"></app-form-error>
+    </div>
+   
+    <div class="input-group">
+        <span class="p-float-label">
+            <input formControlName="email" id="email" type="email" pInputText> 
+            <label for="email">Email :</label>
+        </span>
+        <app-form-error [control]="form.controls['email']"></app-form-error>
+    </div> 
+    <div class="input-group">
+        <span class="p-float-label">
+            <input formControlName="vaTnumber" id="vaTnumber" type="text" pInputText> 
+            <label for="vaTnumber">VAT number :</label>
+        </span>
+        <app-form-error [control]="form.controls['vaTnumber']"></app-form-error>
+    </div>
+    <!-- address -->
+    <div class="input-group">
+        <p>
+            Addresse
+            <app-form-error [control]="form.controls['address']"></app-form-error>
+        </p>
+        <app-input-address formControlName="address"></app-input-address>
+    </div>
+    <div class="input-group">
+        <span class="p-float-label">
+            <input formControlName="phoneNumber" id="phoneNumber" type="text" pInputText> 
+            <label for="phoneNumber">Phone number :</label>
+        </span>
+        <app-form-error [control]="form.controls['phoneNumber']"></app-form-error>
+    </div>
+</form>

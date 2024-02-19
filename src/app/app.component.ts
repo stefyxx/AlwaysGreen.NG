@@ -6,6 +6,7 @@ import { NavComponent } from './layout/nav/nav.component';
 import { MenuService } from './services/menu.service';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { TitleService } from './services/title.service';
 
 @Component({
   selector: 'app-root',
@@ -23,12 +24,14 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 })
 export class AppComponent {
   title = 'AlwaysGreen.NG';
-
-  menuOpen: Signal<boolean>
+  titleGlobal : Signal<string>;
+  menuOpen: Signal<boolean>;
 
   constructor(
-    private readonly menuService: MenuService
+    private readonly menuService: MenuService,
+    private readonly titleService: TitleService
   ) {
-    this.menuOpen = menuService.isOpen; 
+    this.menuOpen = menuService.isOpen;
+    this.titleGlobal = titleService.title; 
   }
 }

@@ -1,0 +1,40 @@
+<div>
+    <span class="p-float-label">
+        <input list="suggestions" [value]="value?.streetName" (click)="onTouch()" (input)="onStreetChange($event)" pInputText [disabled]="disabled">
+        <label for="street">Rue</label>
+    </span>
+    <span class="p-float-label">
+        <input [value]="value?.streetNumber" (click)="onTouch()" (input)="onNumberChange($event)" pInputText [disabled]="disabled">
+        <label for="number">Numero</label>
+    </span>
+    <span class="p-float-label">
+        <input [value]="value?.unit" (click)="onTouch()" (input)="onNumberChange($event)" pInputText [disabled]="disabled">
+        <label for="number">Unit</label>
+    </span>
+    <span class="p-float-label">
+        <input [value]="value?.unitNumber" (click)="onTouch()" (input)="onNumberChange($event)" pInputText [disabled]="disabled">
+        <label for="number">Unit number </label>
+    </span>
+    <span class="p-float-label">
+        <input [value]="value?.apartment" (click)="onTouch()" (input)="onNumberChange($event)" pInputText [disabled]="disabled">
+        <label for="number">Appartment </label>
+    </span>
+    <span class="p-float-label">
+        <input [value]="value?.city" (click)="onTouch()" (input)="onNumberChange($event)" pInputText [disabled]="disabled">
+        <label for="number">City</label>
+    </span>
+    <span class="p-float-label">
+        <input [value]="value?.zipCode" (click)="onTouch()" (input)="onNumberChange($event)" pInputText [disabled]="disabled">
+        <label for="number">Zip code</label>
+    </span>
+    <span class="p-float-label">
+        <input [value]="value?.country" (click)="onTouch()" (input)="onNumberChange($event)" pInputText [disabled]="disabled">
+        <label for="number">Country</label>
+    </span>
+</div>
+
+<datalist id="suggestions">
+    @for (item of suggestions; track $index) {
+        <option>{{item.display_name}}</option>
+    }
+</datalist>

@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
+import { TitleService } from '../../../services/title.service';
 
 @Component({
   selector: 'app-alltransports',
@@ -20,10 +21,12 @@ export class AlltransportsComponent implements OnInit{
   allTransports: Signal<ITransport[]> = signal([]);
 
   constructor(
-    private readonly transportService: TransportService
+    private readonly transportService: TransportService,
+    private readonly titleService : TitleService
   ) {}
 
   ngOnInit(): void {
     this.allTransports = this.transportService.transports;
+    this.titleService.setTitle('All transports');
   }
 }

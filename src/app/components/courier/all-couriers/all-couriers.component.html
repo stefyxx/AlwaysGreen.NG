@@ -4,7 +4,7 @@
     <p>Lista di tutti i courrier registrati in DB</p>
     <ul>
         @for (item of allCouriers(); track $index) {
-            <li>{{item.name}}</li>
+        <li>{{item.name}}</li>
         }
     </ul>
 </div>
@@ -29,13 +29,17 @@
                 <td>{{courier.phoneNumber}}</td>
                 <td>{{courier.email}}</td>
                 <td>{{courier.vaTnumber}}</td>
-                <td>{{courier.address.streetName}},{{courier.address.streetNumber}}  {{courier.address.city}}</td>
+                <td>{{courier.address.streetName}},{{courier.address.streetNumber}} {{courier.address.city}}</td>
                 <td>{{courier.isActive}}</td>
-                <!-- <td>
+                <td>
+                    <p-button [routerLink]="['/courier/update', courier.id]" severity="info" size="small"
+                        icon="pi pi-pencil"></p-button>
                     <p-button (onClick)="delete(courier)" severity="danger" size="small" icon="pi pi-trash"></p-button>
-                    <p-button [routerLink]="['/contact-edit', contact.id]" severity="info" size="small" icon="pi pi-pencil"></p-button>
-                </td> -->
+                </td>
             </tr>
+        </ng-template>
+        <ng-template pTemplate="footer" let-courier>
+            <p-button [routerLink]="['/courier/insert']" severity="success" size="small" icon="pi pi-plus"></p-button>
         </ng-template>
     </p-table>
 </div>

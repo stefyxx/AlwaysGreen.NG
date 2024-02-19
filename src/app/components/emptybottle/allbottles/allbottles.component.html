@@ -1,25 +1,25 @@
-<p>allbottles works!</p>
-
-<p-table [value]="allEmptybottles()" [tableStyle]="{'min-width': '60rem'}">
-    <ng-template pTemplate="header">
-        <tr>
-            <th>Name</th>
-            <th>Image</th>
-            <th>Stock</th>
-            <th>Price</th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-bottle>
-        <tr>
-            <td>{{bottle.typename}}</td>
-            <td><img [src]="'assets/images/emptybottle/' + bottle.typename + '.jpg'" [alt]="bottle.typename" width="100" class="shadow-4" /></td>
-            <td>{{bottle.quantity}}</td>
-            <td>{{bottle.prix | currency:'EUR'}}</td>
-            
-    </ng-template>
-    <ng-template pTemplate="summary">
-        <div class="flex align-items-center justify-content-between">
-            There are currently a total of {{allEmptybottles() ? allEmptybottles.length : 0 }} types of plastic bottles that you can recycle.
-        </div>
-    </ng-template>
-</p-table>
+<div>
+    <p-table [value]="allEmptybottles()" [tableStyle]="{'min-width': '60rem'}">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Stock</th>
+                <th>Price</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-bottle>
+            <tr>
+                <td>{{bottle.typeName}}</td>
+                <td><img [src]="'assets/images/emptybottle/' + bottle.typeName + '.jpg'" [alt]="bottle.typename" width="100" class="shadow-4" /></td>
+                <td>{{bottle.quantity}}</td>
+                <td>{{bottle.prix | currency:'EUR'}}</td>
+                
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between">
+                There are currently a total of {{allEmptybottles().length ? allEmptybottles().length : 0 }} types of plastic bottles that you can recycle.
+            </div>
+        </ng-template>
+    </p-table>
+</div>
