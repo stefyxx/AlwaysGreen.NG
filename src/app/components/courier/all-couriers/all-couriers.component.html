@@ -3,6 +3,39 @@
 <div>
     <p>Lista di tutti i courrier registrati in DB</p>
     <ul>
-        @for (item of allCouriers; track $index) {}
+        @for (item of allCouriers(); track $index) {
+            <li>{{item.name}}</li>
+        }
     </ul>
+</div>
+<div>
+    <p-table [value]="allCouriers()">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>phone number</th>
+                <th>email</th>
+                <th>VAT number</th>
+                <th>address</th>
+                <th>Is Active</th>
+                <th>Actions</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-courier>
+            <tr>
+                <td>{{courier.id}}</td>
+                <td>{{courier.name}}</td>
+                <td>{{courier.phoneNumber}}</td>
+                <td>{{courier.email}}</td>
+                <td>{{courier.vaTnumber}}</td>
+                <td>{{courier.address.streetName}},{{courier.address.streetNumber}}  {{courier.address.city}}</td>
+                <td>{{courier.isActive}}</td>
+                <!-- <td>
+                    <p-button (onClick)="delete(courier)" severity="danger" size="small" icon="pi pi-trash"></p-button>
+                    <p-button [routerLink]="['/contact-edit', contact.id]" severity="info" size="small" icon="pi pi-pencil"></p-button>
+                </td> -->
+            </tr>
+        </ng-template>
+    </p-table>
 </div>

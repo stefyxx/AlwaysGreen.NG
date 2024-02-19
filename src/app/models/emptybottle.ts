@@ -2,7 +2,7 @@ import { ITransport } from "./transport";
 
 export interface IEmptybottle {
     id: number;
-    typename : string;
+    typeName : string;
     quantity : number;
     prix : number | null;
     

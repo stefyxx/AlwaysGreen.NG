@@ -15,6 +15,8 @@
     
     <div class="right-side">
       <nav [ngClass]="{ open: menuOpen() }" app-nav></nav>
+      <!-- <nav app-nav></nav> -->
+
       <div class="pill-group">
         @for (item of [
           { title: 'Couriers', link: 'https://localhost:7135/api/Courier' },

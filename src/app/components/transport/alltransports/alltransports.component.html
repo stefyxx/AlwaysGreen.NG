@@ -1,0 +1,38 @@
+<div>
+    <p-table [value]="allTransports()" [tableStyle]="{'min-width': '60rem'}">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Date</th>
+                <th>Location from</th>
+                <th>Location To</th>
+                <th>Courrier</th>
+                <th>Empty bottle</th>
+
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-transport>
+            <tr>
+                <td>{{transport.date}}</td>
+                <td>{{transport.locationFrom.agencyName ? transport.locationFrom.agencyName : transport.locationFrom.companyName }} {{transport.locationFrom.address.city}}</td>
+                <td>{{transport.locationTo.agencyName ? transport.locationTo.agencyName : transport.locationTo.companyName }} {{transport.locationTo.address.city}}</td>
+                <td>{{transport.courier.name}} {{transport.courier.address.city}}</td>
+                <td>
+                    @if(transport.emptybottles.length == 0){ <td> 0 </td> }
+                    @if(transport.emptybottles.length > 0){
+                        <tr *ngFor="let item of transport.emptybottles"></tr>
+                        <td> item.typeName  +"for"+ item.quantity quantity</td>
+
+
+                    } 
+  
+                    
+                </td>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between">
+                There are currently a total of {{allTransports() ? allTransports().length : 0 }} types of plastic bottles that you can recycle.
+            </div>
+        </ng-template>
+    </p-table>
+    
+</div>

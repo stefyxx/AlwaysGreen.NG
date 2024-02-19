@@ -15,7 +15,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  login : string = '/login';
+
   constructor(
     private readonly menuService: MenuService
   ) {}

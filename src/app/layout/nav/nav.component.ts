@@ -13,8 +13,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class NavComponent {
 
-  links: any[] = [
-    { title: 'Tous les couriers', link: '/couriers', icon: 'pi pi-amazon' },
+  myLinks: any[] = [
+    { title: 'Tous les couriers', link: '/courier', icon: 'pi pi-amazon' },
     { title: 'Tous les empty bottles', link: '/emptybottles', icon: 'pi pi-android' },
     { title: 'Picks up Point', link: '/storespickuppoint', icon: 'pi pi-map-marker' },
     { title: 'Start a transport', link: '/transport', icon: 'pi pi-globe' },

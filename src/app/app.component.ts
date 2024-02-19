@@ -4,6 +4,8 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './layout/header/header.component';
 import { NavComponent } from './layout/nav/nav.component';
 import { MenuService } from './services/menu.service';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +14,9 @@ import { MenuService } from './services/menu.service';
     CommonModule, 
     RouterOutlet,
     HeaderComponent,
-    NavComponent
+    NavComponent,
+    ToastModule,
+    ConfirmDialogModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
