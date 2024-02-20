@@ -14,7 +14,7 @@ import { IAddress } from '../../../models/address';
   providers: [{ 
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => InputAddressComponent),
-    multi: true
+    multi: true,
   }]
 })
 export class InputAddressComponent implements ControlValueAccessor{
@@ -78,16 +78,9 @@ export class InputAddressComponent implements ControlValueAccessor{
       ...this.value,
       streetName: ($event.target as HTMLInputElement).value 
     }
-    // if(Object.values(this.value).some(v => !v)) {
-    // if(!this.value.streetName || !this.value.number){
-    //   this.onChange(null);
-    // } else {
-    //   this.onChange(this.value);
-    // }
     this.onChange(this.value);
     this.search$.next(this.value?.streetName ?? '');
   }
-
   onNumberChange($event: Event) {
     this.value = { 
       ...this.value,
@@ -95,7 +88,6 @@ export class InputAddressComponent implements ControlValueAccessor{
     }
     this.onChange(this.value);
   }
-
   onUnitChange($event: Event){
     this.value ={
       ...this.value,

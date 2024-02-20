@@ -33,6 +33,7 @@ export class AllCouriersComponent implements OnInit {
   }
 
   delete(courier : ICourier){
+    console.log(courier);
     this.courierService.remove(courier.id);
   }
 }
