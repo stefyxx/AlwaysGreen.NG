@@ -22,8 +22,7 @@ export class InputAddressComponent implements ControlValueAccessor{
   disabled: boolean = false;
   
   @Input()
-  //value: { street?: string, number?: string }|null = null;
-  value : IAddress | null = null;
+  value!: IAddress;
   
   onChange: any; //funzione se cambi quello che hai scritto nell'imput
   
@@ -31,11 +30,11 @@ export class InputAddressComponent implements ControlValueAccessor{
   
   suggestions: any[] = []; //si riempie dell'appello all'API ,e ti dona dei risultati x riempire l'imput velocemente
   
-  search$: BehaviorSubject<string> = new BehaviorSubject<string>(''); //Observable --> recupera quello che sto scrivendo nell'imput ogni 3 secondi(-->retry(3))
-
+  search$: BehaviorSubject<string> = new BehaviorSubject<string>(''); 
   constructor(
     private readonly _httpClient: HttpClient
   ) {
+    //Observable --> recupera quello che sto scrivendo nell'imput ogni 3 secondi(-->retry(3))
     this.search$.pipe(
       switchMap((s) => {
         const params = new HttpParams({
@@ -63,6 +62,7 @@ export class InputAddressComponent implements ControlValueAccessor{
   writeValue(obj: any): void {
     this.value = obj;
   }
+
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }
@@ -76,23 +76,67 @@ export class InputAddressComponent implements ControlValueAccessor{
   onStreetChange($event: Event) {
     this.value = { 
       ...this.value,
-      street: ($event.target as HTMLInputElement).value 
+      streetName: ($event.target as HTMLInputElement).value 
     }
     // if(Object.values(this.value).some(v => !v)) {
-    // if(!this.value.street || !this.value.number){
+    // if(!this.value.streetName || !this.value.number){
     //   this.onChange(null);
     // } else {
     //   this.onChange(this.value);
     // }
     this.onChange(this.value);
-    this.search$.next(this.value?.street ?? '');
+    this.search$.next(this.value?.streetName ?? '');
   }
 
   onNumberChange($event: Event) {
     this.value = { 
       ...this.value,
-      number: ($event.target as HTMLInputElement).value 
+      streetNumber: ($event.target as HTMLInputElement).value 
     }
     this.onChange(this.value);
   }
+
+  onUnitChange($event: Event){
+    this.value ={
+      ...this.value,
+      unit : ($event.target as HTMLInputElement).value
+    }
+    this.onChange(this.value);
+  }
+  onUnitNumberChange($event: Event){
+    this.value ={
+      ...this.value,
+      unitNumber : ($event.target as HTMLInputElement).value
+    }
+    this.onChange(this.value);
+  }
+  onApartmentChange($event: Event){
+    this.value ={
+      ...this.value,
+      apartment : ($event.target as HTMLInputElement).value
+    }
+    this.onChange(this.value);
+  }
+  onCityChange($event: Event){
+    this.value ={
+      ...this.value,
+      city : ($event.target as HTMLInputElement).value
+    }
+    this.onChange(this.value);
+  }
+  onZipcodeChange($event: Event){
+    this.value ={
+      ...this.value,
+      zipCode : ($event.target as HTMLInputElement).value
+    }
+    this.onChange(this.value);
+  }
+  onCountryChange($event: Event){
+    this.value ={
+      ...this.value,
+      country : ($event.target as HTMLInputElement).value
+    }
+    this.onChange(this.value);
+  }
+
 }

@@ -6,6 +6,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { max } from 'rxjs';
 import { FormErrorComponent } from '../../form/form-error/form-error.component';
 import { InputAddressComponent } from '../../form/input-address/input-address.component';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-courier-form',
@@ -16,7 +17,8 @@ import { InputAddressComponent } from '../../form/input-address/input-address.co
     ReactiveFormsModule,
     InputTextModule,
     FormErrorComponent,
-    InputAddressComponent
+    InputAddressComponent,
+    ButtonModule
   ],
   templateUrl: './courier-form.component.html',
   styleUrl: './courier-form.component.scss'
@@ -39,9 +41,14 @@ export class CourierFormComponent {
        []]
       //birthDate: [new Date(), [Validators.required]],
     })
+    //se inserisci id, lo puoi usare x update
+    //this.form.patchValue(this.defaulValues)
   }
 
+  
   submit(){
+    console.log(this.form.value);
+    
     if(this.form.invalid) {
       return;
     }

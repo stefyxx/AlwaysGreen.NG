@@ -26,7 +26,7 @@
     <div class="input-group">
         <p>
             Addresse
-            <app-form-error [control]="form.controls['address']"></app-form-error>
+            <!-- <app-form-error [control]="form.controls['address']"></app-form-error> -->
         </p>
         <app-input-address formControlName="address"></app-input-address>
     </div>
@@ -36,5 +36,9 @@
             <label for="phoneNumber">Phone number :</label>
         </span>
         <app-form-error [control]="form.controls['phoneNumber']"></app-form-error>
+    </div>
+
+    <div class="input-group flex flex-end">
+        <p-button [disabled]="form.invalid" type="submit" severity="info">Ajouter</p-button>
     </div>
 </form>

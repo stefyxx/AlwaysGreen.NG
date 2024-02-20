@@ -14,6 +14,10 @@
     <span *ngIf="control.errors['beforeToday']">Date invalide (max: {{ control.errors['beforeToday'].maxDate | date : 'dd/MM/yyyy' }})</span>
     <span *ngIf="control.errors['notBefore']">Date invalide (min: {{ control.errors['notBefore'].minDate | date : 'dd/MM/yyyy' }})</span>
     <span *ngIf="control.errors['streetRequired']">La rue est un champ requis</span>
-    <span *ngIf="control.errors['invalidAddress']">L'adresse est invalide'</span>
+    <span *ngIf="control.errors['numberRequired']">Le numero est un champ requis</span>
+    <span *ngIf="control.errors['cityRequired']">La ville est un champ requis</span>
+    <span *ngIf="control.errors['zipCodeRequired']">Le zip code est un champ requis</span>
+    <span *ngIf="control.errors['countryRequired']">Le Pay est un champ requis</span>
+    <!-- <span *ngIf="control.errors['invalidAddress']">L'adresse est invalide'</span> -->
 }
 
