@@ -1,8 +1,7 @@
 import { Component, Input, OnInit, Signal, input, signal } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TitleService } from '../../../services/title.service';
 import { TransportService } from '../../../services/transport.service';
-import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormErrorComponent } from '../../form/form-error/form-error.component';
@@ -17,6 +16,9 @@ import { CourierService } from '../../../services/courier.service';
 import { TableModule } from 'primeng/table';
 import { CalendarModule } from 'primeng/calendar';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { Router, RouterLink } from '@angular/router';
+import { DateValidators } from '../../../validators/date.validators';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-transport-form',
@@ -32,6 +34,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
     DropdownModule,
     CalendarModule,
     InputNumberModule,
+    RouterLink
   ],
   templateUrl: './transport-form.component.html',
   styleUrl: './transport-form.component.scss'
@@ -42,18 +45,18 @@ export class TransportFormComponent implements OnInit {
   emptybottles: Signal<IEmptybottle[]> = signal([]);
   allLocations: Signal<ILocation[]> = signal([]);
   couriers: Signal<ICourier[]> = signal([]);
+  //non ne ho bisogno perche uso FormControllName che, oltre a fae controllo, fa anche da @Input()
+  // @Input()
+  // selectedBottle: IEmptybottle | null = null;
 
-  @Input()
-  selectedBottle: IEmptybottle | null = null;
+  // @Input()
+  // selectedLocationFrom: ILocation | null = null;
 
-  @Input()
-  selectedLocationFrom: ILocation | null = null;
+  // @Input()
+  // selectedLocationTo: ILocation | null = null;
 
-  @Input()
-  selectedLocationTo: ILocation | null = null;
-
-  @Input()
-  selectedCourier: ICourier | null = null;
+  // @Input()
+  // selectedCourier: ICourier | null = null;
 
   constructor(
     private readonly titleService: TitleService,
@@ -64,14 +67,16 @@ export class TransportFormComponent implements OnInit {
     private readonly emptybottleService: EmptybottleService,
     private readonly locationService: LocationService,
     private readonly courierService : CourierService,
+    private readonly messageService: MessageService
   ) {
 
     this.form = this.formBuilder.group({
-      date: [null, []],
+      date: [null, [Validators.required, DateValidators.beforeToday]],
       emptybottles: this.formBuilder.array([]),
-      locationFrom: [null, []],
-      locationTo: [null, []],
-      courier: [null, []]
+      locationFrom: [null, [Validators.required]],
+      locationTo: [null, [Validators.required]],
+      courier: [null, [Validators.required]],
+      quantity:[0,[Validators.min(1)]]
     })
   }
 
@@ -90,6 +95,7 @@ export class TransportFormComponent implements OnInit {
     this.add();
   }
 
+  //add a row into ng-container
   add() {
     console.log(this.bottles )
     this.bottles.push(this.formBuilder.group({
@@ -97,8 +103,10 @@ export class TransportFormComponent implements OnInit {
       quantity: 0
     }))
   }
-  delete(){
 
+  delete(index : number){
+    //devo trovare index e poi split a quell'index
+    this.bottles.removeAt(index)
   }
 
   submit() {
@@ -109,6 +117,14 @@ export class TransportFormComponent implements OnInit {
     }
 
     this.transportService.insert(this.form.value)
+    this.messageService.add(
+      {
+        severity: 'success',
+        summary: 'Your transport has been well created',
+        detail: '',
+        icon: 'pi pi-check'
+      }
+    )
 
     //ritorno a Transport
     this.router.navigate(['transport']);

@@ -30,11 +30,11 @@ export class AddressValidators {
         else return null;
     }
 
-    // static zipCodeMaxLenght(control: AbstractControl) : ValidationErrors|null{
-    //     const value = control.value;
-    //     if(value.zipCode.length > 4) return Validators.maxLength(4)
-    //     else return null;
-    // }
+    static zipCodeMaxLenght(control: AbstractControl) : ValidationErrors|null{
+        const value = control.value;
+        if(value.zipCode.length > 4) return Validators.maxLength(4)
+        else return null;
+    }
 
 
     static countryRequired(control: AbstractControl): ValidationErrors|null {

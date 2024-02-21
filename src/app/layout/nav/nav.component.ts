@@ -17,7 +17,7 @@ export class NavComponent {
     { title: 'Tous les couriers', link: '/courier', icon: 'pi pi-amazon' },
     { title: 'Tous les empty bottles', link: '/emptybottle', icon: 'pi pi-android' },
     { title: 'Picks up Point', link: '/storespickuppoint', icon: 'pi pi-map-marker' },
-    { title: 'Start a transport', link: '/transport', icon: 'pi pi-globe' },
+    { title: 'Start a transport', link: '/transport/insert', icon: 'pi pi-globe' },
     
   ]
 }

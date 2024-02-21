@@ -17,8 +17,6 @@ export const routes: Routes = [
     { path: 'transport', component: AlltransportsComponent, title: 'Show all transports' },
     { path: 'transport/insert', component: TransportFormComponent, title: 'Start a transport' }
 
-
-
 ];
 
 export default routes;

@@ -18,7 +18,7 @@ export class CourierService {
   ) { 
     this.httpClient.get<ICourier[]>('https://localhost:7135/api/Courier')
     .subscribe(result =>{
-      this._allCouriers.set(result.map(c => ({...c, label: c.name + '  ' + c.address.city})))
+      this._allCouriers.set(result.map(c => ({...c, label: c.name + ' - ' + c.address.city})))
     });
     //subscribe == mi 'abbono' al risultato
   }

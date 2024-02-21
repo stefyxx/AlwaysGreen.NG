@@ -14,23 +14,33 @@
 
             <p-button class="pb-3" label="Add bottle" icon="pi pi-plus" iconPos="right" (onClick)="add()"></p-button>
             <br>
-            <ng-container formArrayName="emptybottles">
-                <p-table [value]="bottles.controls" [tableStyle]="{'min-width': '60rem'}">
+            <br>
+            <ng-container formArrayName="emptybottles" >
+                <p-table [value]="bottles.controls" [tableStyle]="{'min-width': '60rem'}" >
                     <ng-template pTemplate="header">
                         <tr>
                             <th>Type</th>
                             <th>Quantity</th>
+                            <th></th>
                         </tr>
                     </ng-template>
-                    <ng-template pTemplate="body" let-bottle>
-                        <tr [formGroup]="bottle">
-                            <td><p-dropdown [options]="emptybottles()"
+                    <ng-template pTemplate="body" let-bottle let-i="rowIndex">
+                        <tr [formGroup]="bottle" >
+                            <td>
+                                <p-dropdown [options]="emptybottles()"
                                 appendTo="body"
                                 optionLabel="typeName" [showClear]="true"
                                 optionValue="typeName"
                                 placeholder="Select a emptybottles"
-                                formControlName="typeName"></p-dropdown></td>
-                            <td><p-inputNumber formControlName="quantity"></p-inputNumber></td>
+                                formControlName="typeName"></p-dropdown>
+                            </td>
+                            <td>
+                                <p-inputNumber formControlName="quantity"></p-inputNumber>
+                                
+                            </td>
+                            <td>
+                                <p-button class="pb-3" label="Remove bottle" icon="pi pi-trash" iconPos="left" (onClick)="delete(i)"></p-button>
+                            </td>
                         </tr>
                     </ng-template>
                 </p-table>
@@ -49,4 +59,13 @@
     <div class="input-group flex flex-end">
         <p-button [disabled]="form.invalid" type="submit" severity="info">Ajouter</p-button>
     </div>
+    <div class="input-group flex flex-end">
+        <span class="padding-plus">Go back to page with all trasports</span>
+        <p-button [routerLink]="['/transport']" severity="success" size="small" icon="pi pi-home"></p-button>
+    </div>
+    
 </form>
+
+<div>
+
+</div>

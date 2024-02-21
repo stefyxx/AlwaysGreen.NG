@@ -17,9 +17,10 @@ export class LocationService {
   ) { 
     this.httpClient.get<ILocation[]>('https://localhost:7135/api/Location')
     .subscribe(result =>{
+      console.log(result)
       this._allLocations.set(result.map(r => ({
         ...r,
-        label: r.agencyname ?? r.companyname ?? '' + ' '+ r.address.city
+        label: (r?.agencyName ?? r.companyName ?? ' ')+ ' - ' + r.address.city
       })));
     })
   }

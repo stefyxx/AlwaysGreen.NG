@@ -9,8 +9,7 @@ import { ButtonModule } from 'primeng/button';
 import { TitleService } from '../../../services/title.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AddressValidators } from '../../../validators/address.validators';
-//import { AddressValidators } from '../../../validators/address.validators';
-//import { MessageService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-courier-form',
@@ -29,17 +28,16 @@ import { AddressValidators } from '../../../validators/address.validators';
 })
 export class CourierFormComponent {
   form: FormGroup;
-  id: number|null= null;
+  id: number | null = null;
 
   constructor(
-    private readonly courierService : CourierService,
+    private readonly courierService: CourierService,
     private readonly formBuilder: FormBuilder,
     private readonly titleService: TitleService,
     private readonly router: Router,
-    private readonly route : ActivatedRoute,
-    //private readonly messageService: MessageService
-  ) 
-  {
+    private readonly route: ActivatedRoute,
+    private readonly messageService: MessageService
+  ) {
     this.titleService.setTitle('Create a new courier');
 
     this.form = formBuilder.group({
@@ -47,44 +45,59 @@ export class CourierFormComponent {
       phoneNumber: [null, [Validators.required, Validators.maxLength(15)]],
       email: [null, [Validators.required, Validators.email]],
       vaTnumber: [null, [Validators.required]],
-      address: [{}, [AddressValidators.streetRequired]]})
-    
-      this.id = parseInt(this.route.snapshot.params['id'])
+      address: [{}, [AddressValidators.streetRequired, AddressValidators.numberRequired,
+      AddressValidators.cityRequired, AddressValidators.countryRequired,
+      AddressValidators.zipCodeRequired,
+        //AddressValidators.zipCodeMaxLenght
+      ]]
+    })
 
-      if(this.id){
-        const courier = this.courierService.get(this.id);
-        console.log(courier);
-        if(courier){
-          this.form.patchValue({...courier})
-        }
+    this.id = parseInt(this.route.snapshot.params['id'])
+
+    if (this.id) {
+      const courier = this.courierService.get(this.id);
+      console.log(courier);
+      if (courier) {
+        this.form.patchValue({ ...courier })
       }
+    }
   }
-  
-  submit(){
+
+  submit() {
     console.log(this.form.value);
-    
-    if(this.form.invalid) {
+
+    if (this.form.invalid) {
       return;
     }
 
     this.id = parseInt(this.route.snapshot.params['id']);
     console.log(this.id);
-    if(this.id){
+    if (this.id) {
       //update
-      this.courierService.update(this.id, this.form.value)
+      this.courierService.update(this.id, this.form.value);
+      //sms prime costum
+      this.messageService.add(
+        {
+          severity: 'success',
+          summary: 'Your courier has been well updated in our DB',
+          detail: '',
+          icon: 'pi pi-check'
+        }
+      )
     }
-    else{
+    else {
       this.courierService.insert(this.form.value);
+      //sms prime costum
+      this.messageService.add(
+        {
+          severity: 'success',
+          summary: 'Your courier has been well added in our DB',
+          detail: '',
+          icon: 'pi pi-check'
+        }
+      )
     }
 
-    //sms prime costum
-    // this.messageService.add(
-    //   {
-    //   severity : 'success',
-    //   summary: 'Your courier has been well added in our DB',
-    //   detail: '',
-    //   icon: 'pi pi-check'}
-    // )
 
     //ritorno a Home
     this.router.navigate(['']);

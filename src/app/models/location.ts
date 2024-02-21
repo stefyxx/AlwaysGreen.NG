@@ -7,9 +7,9 @@ import { ITransport } from "./transport";
 
 export interface ILocation {
     id: Number;
-    agencyname: string | null;
-    companyname: string | null;
-    phonenumber: string;
+    agencyName: string | null;
+    companyName: string | null;
+    phoneNumber: string;
     email: string;
     roles: Roleenum[] | []; //ArrayType[NewType] --> x default non avrà il mio Enum
     isActive: boolean;
