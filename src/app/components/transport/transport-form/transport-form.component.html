@@ -1,0 +1,31 @@
+<p>Start your transport!</p>
+<form [formGroup]="form" (ngSubmit)="submit()">
+
+    <div class="input-group">
+        <span class="p-float-label">
+            <p-calendar dateFormat="dd/mm/yy" id="bd" formControlName="date"></p-calendar>
+            <label for="bd">Day of departure </label>
+        </span>
+        <app-form-error [control]="form.controls['date']"></app-form-error>
+    </div>
+    <div class="input-group">
+        <p-dropdown [options]="emptybottles()" [(ngModel)]="selectedBottle" optionLabel="typeName" [showClear]="true"
+            placeholder="Select a emptybottles"></p-dropdown>
+
+            <!-- questo usando ReactiveFormsModule -->
+        <p-dropdown formControlName="selectedCity" [options]="emptybottles()" optionLabel="typeName"
+            placeholder="Select a emptybottles"></p-dropdown>
+
+    </div>
+
+    <div class="input-group">
+            <!-- questo usando ReactiveFormsModule -->
+        <p-dropdown formControlName="locationFrom" [options]="allLocations()" [optionLabel]="locationFrom?.agencyname? companyname "
+            placeholder="Select from start"></p-dropdown>
+    </div>
+
+
+    <div class="input-group flex flex-end">
+        <p-button [disabled]="form.invalid" type="submit" severity="info">Ajouter</p-button>
+    </div>
+</form>

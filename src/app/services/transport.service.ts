@@ -20,4 +20,11 @@ export class TransportService {
       this._transports.set(result)
     })
   }
+
+  insert(transport : ITransport){
+    this.httpClient.post<ITransport>('https://localhost:7135/api/Transport/insert', transport)
+    .subscribe(result=>{
+      this._transports.update(datas => [...datas, result]);
+    });
+  }
 }
