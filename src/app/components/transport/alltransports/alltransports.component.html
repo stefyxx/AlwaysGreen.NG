@@ -5,7 +5,7 @@
                 <th>Date</th>
                 <th>Location from</th>
                 <th>Location To</th>
-                <th>Courrier</th>
+                <th>Courrier</th>>
                 <th>Empty bottle</th>
 
             </tr>
@@ -19,13 +19,12 @@
                 <td>
                     @if(transport.emptybottles.length == 0){ <td> 0 </td> }
                     @if(transport.emptybottles.length > 0){
-                        <tr *ngFor="let item of transport.emptybottles"></tr>
-                        <td> item.typeName  +"for"+ item.quantity quantity</td>
-
-
-                    } 
-  
-                    
+                        <tr>
+                            @for (item of transport.emptybottles; track $index) {
+                                <td>{{item.typeName}} for {{item.quantity}} quantity</td>
+                            }
+                        </tr>
+                    }                   
                 </td>
         </ng-template>
         <ng-template pTemplate="summary">

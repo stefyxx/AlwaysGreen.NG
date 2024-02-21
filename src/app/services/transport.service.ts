@@ -22,7 +22,16 @@ export class TransportService {
   }
 
   insert(transport : ITransport){
-    this.httpClient.post<ITransport>('https://localhost:7135/api/Transport/insert', transport)
+    console.log(transport);
+    const newData = {
+      date: transport.date,
+      emptybottles : transport.emptybottles,
+      locationFromId : transport.locationFrom?.id,
+      locationToId : transport.locationTo?.id,
+      courierId : transport.courier.id
+    }
+    console.log(newData);
+    this.httpClient.post<ITransport>('https://localhost:7135/api/Transport/insert', newData)
     .subscribe(result=>{
       this._transports.update(datas => [...datas, result]);
     });

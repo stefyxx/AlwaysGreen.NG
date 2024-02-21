@@ -9,5 +9,7 @@ export interface ICourier {
     vaTnumber: string;
     isActive : boolean;
     address : IAddress; 
-    transports: ITransport[] | [];  
+    transports: ITransport[] | [];
+    //property che mi serve SOLO nel creare p-dropdown
+    label?: string; 
 }

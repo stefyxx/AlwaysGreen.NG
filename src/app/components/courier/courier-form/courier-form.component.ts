@@ -8,6 +8,7 @@ import { InputAddressComponent } from '../../form/input-address/input-address.co
 import { ButtonModule } from 'primeng/button';
 import { TitleService } from '../../../services/title.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AddressValidators } from '../../../validators/address.validators';
 //import { AddressValidators } from '../../../validators/address.validators';
 //import { MessageService } from 'primeng/api';
 
@@ -46,7 +47,7 @@ export class CourierFormComponent {
       phoneNumber: [null, [Validators.required, Validators.maxLength(15)]],
       email: [null, [Validators.required, Validators.email]],
       vaTnumber: [null, [Validators.required]],
-      address: [null, []]})
+      address: [{}, [AddressValidators.streetRequired]]})
     
       this.id = parseInt(this.route.snapshot.params['id'])
 

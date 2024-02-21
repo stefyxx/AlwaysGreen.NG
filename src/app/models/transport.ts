@@ -9,7 +9,7 @@ export interface ITransport {
     emptybottles: IEmptybottle[] | [];
     
     //one to many
-    loctationFrom: ILocation | null;
+    locationFrom: ILocation | null;
     locationTo: ILocation | null;
     courier: ICourier;
 }

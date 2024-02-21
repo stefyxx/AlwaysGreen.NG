@@ -8,11 +8,14 @@ import { ITransport } from "./transport";
 export interface ILocation {
     id: Number;
     agencyname: string | null;
-    companyname : string | null;
+    companyname: string | null;
     phonenumber: string;
-    email : string;
-    roles : Roleenum[] | []; //ArrayType[NewType] --> x default non avrà il mio Enum
-    isActive : boolean;
+    email: string;
+    roles: Roleenum[] | []; //ArrayType[NewType] --> x default non avrà il mio Enum
+    isActive: boolean;
+    //property che mi serve SOLO nel creare p-dropdown
+    label?: string;
+
     //FK
     address: IAddress;
     login: ILogin;

@@ -1,0 +1,11 @@
+.input-group {
+    margin-bottom: 20px;
+    ::ng-deep {
+        input, .p-dropdown {
+            min-width: 300px!important;
+        }
+    }
+    .text-error {
+        color: red;
+    }
+}
